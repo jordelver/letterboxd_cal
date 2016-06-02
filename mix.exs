@@ -14,7 +14,7 @@ defmodule LetterboxdCal.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :hound]]
   end
 
   # Dependencies can be Hex packages:
@@ -27,6 +27,9 @@ defmodule LetterboxdCal.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:hound, "~> 1.0"},
+      {:floki, "~> 0.8.1"}
+    ]
   end
 end
