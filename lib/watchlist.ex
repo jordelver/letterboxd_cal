@@ -7,7 +7,7 @@ defmodule LetterboxdCal.Watchlist do
     parse_page(1, [])
   end
 
-  defp parse_page(nil, movies), do: movies
+  defp parse_page(:empty, movies), do: movies
   defp parse_page(page_number, movies) do
     navigate_to(watchlist_url(page_number))
     wait_for_page_load
@@ -26,7 +26,7 @@ defmodule LetterboxdCal.Watchlist do
     next_page_link |> next_page_number
   end
 
-  defp next_page_number([]), do: nil
+  defp next_page_number([]), do: :empty
   defp next_page_number(next_link) do
     next_link
     |> List.first
