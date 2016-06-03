@@ -17,9 +17,13 @@ defmodule LetterboxdCal.Watchlist do
   defp results do
     page_source
     |> Floki.parse()
-    |> Floki.find(".poster-container .frame-title")
+    |> Floki.find(movie_title_css_selector)
     |> Enum.map(&Floki.text/1)
     |> Enum.map(&extract_movie_info/1)
+  end
+
+  defp movie_title_css_selector do
+    ".poster-container .frame-title"
   end
 
   defp next_page do
