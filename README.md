@@ -11,4 +11,9 @@ The following environment variables must be set.
 
 `DATABASE_URI` to `postgresql://<username>:<password>@<host>/<database>`
 
+## Setup
+
+To start the web server
+
+    env PORT=4000 mix server
 
