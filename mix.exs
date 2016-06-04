@@ -14,7 +14,10 @@ defmodule LetterboxdCal.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :hound]]
+    [
+      applications: [:logger, :hound, :moebius],
+      mod: {LetterboxdCal, []}
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -29,7 +32,8 @@ defmodule LetterboxdCal.Mixfile do
   defp deps do
     [
       {:hound, "~> 1.0"},
-      {:floki, "~> 0.8.1"}
+      {:floki, "~> 0.8.1"},
+      {:moebius, "~> 2.0.0"},
     ]
   end
 end

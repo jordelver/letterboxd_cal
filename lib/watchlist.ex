@@ -54,13 +54,13 @@ defmodule LetterboxdCal.Watchlist do
     :timer.sleep(4000)
   end
 
-  # Do this when getting the release info from
-  # IMDB, not here. Store the whole string in
-  # the database
   defp extract_movie_info(title) do
-    title
-    |> String.replace(")", "")
-    |> String.split(~r{ \(})
+    [movie_title | movie_year] =
+      title
+      |> String.replace(")", "")
+      |> String.split(~r{ \(})
+
+    %{original_title: title, title: movie_title, year: movie_year |> List.first}
   end
 
   defp watchlist_url(page_number) do
