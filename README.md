@@ -11,6 +11,11 @@ The following environment variables must be set.
 
 `DATABASE_URI` to `postgresql://<username>:<password>@<host>/<database>`
 
+## Prerequisites
+
+* Elixir 1.2
+* PostgreSQL
+
 ## Setup
 
 To start the web server
