@@ -5,7 +5,9 @@ defmodule LetterboxdCal.Server do
   plug :dispatch
 
   get "/movies.ics" do
-    conn |> send_resp(200, ":D")
+    conn
+    |> put_resp_content_type("text/calendar")
+    |> send_resp(200, LetterboxdCal.Calendar.ical)
   end
 
   match _ do
