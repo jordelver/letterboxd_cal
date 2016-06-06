@@ -34,7 +34,7 @@ config :letterboxd_cal,
   letterboxd_username: System.get_env("LETTERBOXD_USERNAME")
 
 config :moebius, connection: [
-  url: System.get_env("DATABASE_URI"),
+  url: System.get_env("DATABASE_URL"),
   pool_mod: DBConnection.Poolboy
 ]
 
