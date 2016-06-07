@@ -28,7 +28,7 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
-config :hound, driver: "phantomjs"
+config :hound, driver: "phantomjs", host: "127.0.0.1", port: 8910
 
 config :letterboxd_cal,
   letterboxd_username: System.get_env("LETTERBOXD_USERNAME")
