@@ -31,10 +31,10 @@ use Mix.Config
 config :hound, driver: "phantomjs", host: "127.0.0.1", port: 8910
 
 config :letterboxd_cal,
-  letterboxd_username: System.get_env("LETTERBOXD_USERNAME")
+  letterboxd_username: Map.fetch!(System.get_env, "LETTERBOXD_USERNAME")
 
 config :moebius, connection: [
-  url: System.get_env("DATABASE_URL"),
+  url: Map.fetch!(System.get_env, "DATABASE_URL"),
   pool_mod: DBConnection.Poolboy
 ]
 
