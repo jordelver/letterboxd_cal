@@ -1,4 +1,5 @@
 defmodule LetterboxdCal.Watchlist do
+  require Logger
   use Hound.Helpers
 
   def movies do
@@ -9,12 +10,15 @@ defmodule LetterboxdCal.Watchlist do
 
   defp parse_page(:empty, movies), do: movies
   defp parse_page(page_number, movies) do
+    Logger.debug("Parsing page: #{watchlist_url(page_number)}")
     navigate_to(watchlist_url(page_number))
     wait_for_page_load
     parse_page(next_page, movies ++ results)
   end
 
   defp results do
+    Logger.debug(page_source)
+
     page_source
     |> Floki.parse()
     |> Floki.find(movie_title_css_selector)
