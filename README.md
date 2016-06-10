@@ -11,6 +11,8 @@ The following environment variables must be set.
 
 `DATABASE_URI` to `postgresql://<username>:<password>@<host>/<database>`
 
+`PHANTOMJS_URL` to a URL which has PhantomJS (`phantomjs --wd`) running
+
 ## Prerequisites
 
 * Elixir 1.2
