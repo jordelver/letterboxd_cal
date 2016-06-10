@@ -11,7 +11,8 @@ defmodule LetterboxdCal.Watchlist do
   defp parse_page(:empty, movies), do: movies
   defp parse_page(page_number, movies) do
     Logger.debug("Parsing page: #{watchlist_url(page_number)}")
-    navigate_to(watchlist_url(page_number))
+
+    watchlist_url(page_number) |> navigate_to
     wait_for_page_load
     parse_page(next_page, movies ++ results)
   end
