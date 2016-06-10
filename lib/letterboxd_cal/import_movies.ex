@@ -1,7 +1,7 @@
-defmodule LetterboxdCal.RefreshMovies do
+defmodule LetterboxdCal.ImportMovies do
   import Moebius.DocumentQuery
 
-  def refresh do
+  def import do
     Enum.each(movies, &save_movie/1)
   end
 
