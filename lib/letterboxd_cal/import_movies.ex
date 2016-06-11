@@ -11,6 +11,10 @@ defmodule LetterboxdCal.ImportMovies do
     |> LetterboxdCal.Db.run
   end
 
+  # TODO Move this into whatever calls `ImportMovies` and pipe it in?
+  #
+  #   LetterboxdCal.Watchlist.movies |> LetterboxdCal.ImportMovies.import
+  #
   defp movies do
     LetterboxdCal.Watchlist.movies
   end
