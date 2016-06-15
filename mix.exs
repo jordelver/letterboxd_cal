@@ -15,7 +15,7 @@ defmodule LetterboxdCal.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [
-      applications: [:logger, :hound, :moebius, :cowboy, :plug],
+      applications: [:logger, :hound, :httpoison, :moebius, :cowboy, :plug, :timex],
       mod: {LetterboxdCal, []}
     ]
   end
@@ -33,9 +33,10 @@ defmodule LetterboxdCal.Mixfile do
     [
       {:hound, "~> 1.0"},
       {:floki, "~> 0.8.1"},
-      {:moebius, "~> 2.0.0"},
+      {:moebius, "~> 2.0.2"},
       {:plug, "~> 1.1.4"},
       {:cowboy, "~> 1.0.4"},
+      {:httpoison, "~> 0.8.0"},
     ]
   end
 end

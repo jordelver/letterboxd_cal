@@ -13,6 +13,8 @@ The following environment variables must be set.
 
 `PHANTOMJS_URL` to a URL which has PhantomJS (`phantomjs --wd`) running
 
+`TMDB_API_KEY` to a valid themoviedb.org API key.
+
 ## Prerequisites
 
 * Elixir 1.2
