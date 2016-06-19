@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Jordan Elver/LetterboxdCal//EN
+CALSCALE:GREGORIAN
+<%= for movie <- movies do %>
+BEGIN:VEVENT
+DTSTAMP:<%= movie.dtstamp %>
+DTSTART;VALUE=DATE:<%= movie.dtstart %>
+DTEND;VALUE=DATE:<%= movie.dtend %>
+SUMMARY: <%= movie.title %>
+END:VEVENT
+<% end %>
+END:VCALENDAR
