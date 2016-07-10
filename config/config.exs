@@ -35,7 +35,8 @@ config :hound,
 
 config :letterboxd_cal,
   letterboxd_username: Map.fetch!(System.get_env, "LETTERBOXD_USERNAME"),
-  tmdb_api_key: Map.fetch!(System.get_env, "TMDB_API_KEY")
+  tmdb_api_key: Map.fetch!(System.get_env, "TMDB_API_KEY"),
+  port: (System.get_env("PORT") || 4001)
 
 config :moebius, connection: [
   url: Map.fetch!(System.get_env, "DATABASE_URL"),

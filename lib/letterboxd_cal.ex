@@ -6,8 +6,12 @@ defmodule LetterboxdCal do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
+    {port, _} = Application.get_env(:letterboxd_cal, :port)
+                |> to_string |> Integer.parse
+
     children = [
-      worker(LetterboxdCal.Db, [Moebius.get_connection])
+      worker(LetterboxdCal.Db, [Moebius.get_connection]),
+      Plug.Adapters.Cowboy.child_spec(:http, LetterboxdCal.Server, [], port: port)
     ]
 
     opts = [strategy: :one_for_one, name: LetterboxdCal.Supervisor]

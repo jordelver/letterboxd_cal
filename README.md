@@ -15,6 +15,8 @@ The following environment variables must be set.
 
 `TMDB_API_KEY` to a valid themoviedb.org API key.
 
+`PORT` to the port to use for the webserver (defaults to 4001)
+
 ## Prerequisites
 
 * Elixir 1.2
@@ -22,7 +24,7 @@ The following environment variables must be set.
 
 ## Setup
 
-To start the web server
+To start
 
-    env PORT=4000 mix server
+    mix run --no-halt
 
