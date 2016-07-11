@@ -15,7 +15,15 @@ defmodule LetterboxdCal.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [
-      applications: [:logger, :hound, :httpoison, :moebius, :cowboy, :plug, :timex],
+      applications: [
+        :logger,
+        :hound,
+        :httpoison,
+        :moebius,
+        :cowboy,
+        :plug,
+        :timex
+      ],
       mod: {LetterboxdCal, []}
     ]
   end
