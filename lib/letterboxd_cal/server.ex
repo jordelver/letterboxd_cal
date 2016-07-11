@@ -1,6 +1,7 @@
 defmodule LetterboxdCal.Server do
   use Plug.Router
 
+  plug Plug.Logger, log: :debug
   plug :match
   plug :dispatch
 
