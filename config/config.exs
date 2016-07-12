@@ -43,3 +43,6 @@ config :moebius, connection: [
   pool_mod: DBConnection.Poolboy
 ]
 
+# Import environment specific config
+import_config "#{Mix.env}.exs"
+
