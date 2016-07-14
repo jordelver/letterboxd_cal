@@ -1,7 +1,9 @@
 defmodule LetterboxdCal.ImportMovies do
+  require Logger
   import Moebius.Query
 
   def import do
+    Logger.debug("Importing new movies from Letterboxd")
     Enum.each(movies, &save_movie/1)
   end
 

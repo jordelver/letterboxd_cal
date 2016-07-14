@@ -5,6 +5,7 @@ defmodule LetterboxdCal.UpdateReleaseDates do
   alias LetterboxdCal.TMDB
 
   def update do
+    Logger.debug("Updating movie release dates from TMDB")
     Enum.each(future_releases_without_release_date, &update_release_date/1)
   end
 
