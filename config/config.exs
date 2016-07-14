@@ -28,11 +28,6 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
-config :hound,
-  driver: "phantomjs",
-  host: Map.fetch!(System.get_env, "PHANTOMJS_URL"),
-  port: 443
-
 config :letterboxd_cal,
   letterboxd_username: Map.fetch!(System.get_env, "LETTERBOXD_USERNAME"),
   tmdb_api_key: Map.fetch!(System.get_env, "TMDB_API_KEY"),

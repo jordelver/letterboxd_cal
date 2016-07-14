@@ -1,10 +1,7 @@
 defmodule LetterboxdCal.Watchlist do
   require Logger
-  use Hound.Helpers
 
   def movies do
-    Hound.start_session
-
     parse_page(1, [])
   end
 
@@ -12,27 +9,34 @@ defmodule LetterboxdCal.Watchlist do
   defp parse_page(page_number, movies) do
     Logger.debug("Parsing page: #{watchlist_url(page_number)}")
 
-    watchlist_url(page_number) |> navigate_to
-    wait_for_page_load
-    parse_page(next_page, movies ++ results)
+    page = page_source(page_number)
+    results =  page |> watchlist_movies
+    parse_page(next_page(page), movies ++ results)
   end
 
-  defp results do
-    Logger.debug(page_source)
+  def page_source(page_number) do
+    case HTTPoison.get(watchlist_url(page_number)) do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+        body |> Floki.parse()
+    end
+  end
 
+  def watchlist_movies(page_source) do
     page_source
-    |> Floki.parse()
-    |> Floki.find(movie_title_css_selector)
-    |> Enum.map(&Floki.text/1)
+    |> extract_movie_titles
     |> Enum.map(&extract_movie_info/1)
   end
 
-  defp movie_title_css_selector do
-    ".poster-container .frame-title"
+  def extract_movie_titles(page_source) do
+    page_source
+    |> Floki.find(".poster")
+    |> Floki.attribute("data-film-slug")
   end
 
-  defp next_page do
-    next_page_link |> next_page_number
+  defp next_page(page_source) do
+    page_source
+    |> next_page_link
+    |> next_page_number
   end
 
   defp next_page_number([]), do: :empty
@@ -44,32 +48,41 @@ defmodule LetterboxdCal.Watchlist do
     |> String.to_integer
   end
 
-  defp next_page_link do
+  defp next_page_link(page_source) do
     page_source
-    |> Floki.parse()
     |> Floki.find(".paginate-next")
     |> Floki.attribute("href")
   end
 
-  # It's possible that this is just setting us
-  # up for trouble as the page may take longer
-  # than 4 seconds to load which would mean we
-  # return an empty set
-  defp wait_for_page_load do
-    :timer.sleep(4000)
+  defp extract_movie_info(slug) do
+    case HTTPoison.get(watchlist_film_slug_url(slug)) do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+
+        title = film_title(body)
+        year  = film_release_year(body)
+
+        %{original_title: "#{title} (#{year})", title: title, year: year}
+    end
   end
 
-  defp extract_movie_info(title) do
-    [movie_title | movie_year] =
-      title
-      |> String.replace(")", "")
-      |> String.split(~r{ \(})
+  def film_title(page_source) do
+    page_source
+    |> Floki.attribute("data-film-name")
+    |> Floki.text
+  end
 
-    %{original_title: title, title: movie_title, year: movie_year |> List.first}
+  def film_release_year(page_source) do
+    page_source
+    |> Floki.attribute("data-film-release-year")
+    |> Floki.text
   end
 
   defp watchlist_url(page_number) do
     "https://letterboxd.com/#{watchlist_username}/watchlist/page/#{page_number}/"
+  end
+
+  def watchlist_film_slug_url(slug) do
+    "https://letterboxd.com/ajax/poster#{slug}menu/linked/125x187/"
   end
 
   defp watchlist_username do

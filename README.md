@@ -11,8 +11,6 @@ The following environment variables must be set.
 
 `DATABASE_URI` to `postgresql://<username>:<password>@<host>/<database>`
 
-`PHANTOMJS_URL` to a URL which has PhantomJS (`phantomjs --wd`) running
-
 `TMDB_API_KEY` to a valid themoviedb.org API key.
 
 `PORT` to the port to use for the webserver (defaults to 4001)

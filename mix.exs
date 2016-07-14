@@ -17,7 +17,6 @@ defmodule LetterboxdCal.Mixfile do
     [
       applications: [
         :logger,
-        :hound,
         :httpoison,
         :moebius,
         :cowboy,
@@ -39,7 +38,6 @@ defmodule LetterboxdCal.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:hound, "~> 1.0"},
       {:floki, "~> 0.8.1"},
       {:moebius, "~> 2.0.2"},
       {:plug, "~> 1.1.4"},
