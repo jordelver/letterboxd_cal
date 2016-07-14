@@ -43,6 +43,7 @@ defmodule LetterboxdCal.Mixfile do
       {:plug, "~> 1.1.4"},
       {:cowboy, "~> 1.0.4"},
       {:httpoison, "~> 0.8.0"},
+      {:poison, "~> 2.0.1"},
     ]
   end
 end
