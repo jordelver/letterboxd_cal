@@ -7,7 +7,7 @@ defmodule LetterboxdCal.Watchlist do
 
   defp parse_page(:empty, movies), do: movies
   defp parse_page(page_number, movies) do
-    Logger.debug("Parsing page: #{watchlist_url(page_number)}")
+    Logger.debug("Parsing page: #{watchlist_page_url(page_number)}")
 
     page = page_source(page_number)
     results =  page |> watchlist_movies
@@ -15,7 +15,7 @@ defmodule LetterboxdCal.Watchlist do
   end
 
   def page_source(page_number) do
-    case HTTPoison.get(watchlist_url(page_number)) do
+    case HTTPoison.get(watchlist_page_url(page_number)) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body |> Floki.parse()
     end
@@ -77,7 +77,7 @@ defmodule LetterboxdCal.Watchlist do
     |> Floki.text
   end
 
-  defp watchlist_url(page_number) do
+  defp watchlist_page_url(page_number) do
     "https://letterboxd.com/#{watchlist_username}/watchlist/page/#{page_number}/"
   end
 
