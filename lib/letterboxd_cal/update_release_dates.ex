@@ -10,7 +10,7 @@ defmodule LetterboxdCal.UpdateReleaseDates do
   end
 
   def update_release_date(movie) do
-    movie |> TMDB.release_date |> update_movie(movie)
+    TMDB.release_date(movie) |> update_movie(movie)
   end
 
   def update_movie(release_date, movie) do
