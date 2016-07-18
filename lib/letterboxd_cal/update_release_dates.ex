@@ -13,6 +13,7 @@ defmodule LetterboxdCal.UpdateReleaseDates do
     TMDB.release_date(movie) |> update_movie(movie)
   end
 
+  def update_movie(:empty, movie), do: :empty
   def update_movie(release_date, movie) do
     "UPDATE movies SET release_date = '#{format_date(release_date)}' WHERE original_title = '#{movie.original_title}';"
     |> LetterboxdCal.Db.run

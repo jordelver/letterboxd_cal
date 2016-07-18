@@ -73,6 +73,7 @@ defmodule LetterboxdCal.TMDB do
     |> Enum.filter(fn(result) -> result["type"] == theatrical_release end)
   end
 
+  defp get_release_date([]), do: :empty
   defp get_release_date(results) do
     results
     |> List.first
