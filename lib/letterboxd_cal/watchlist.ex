@@ -5,13 +5,13 @@ defmodule LetterboxdCal.Watchlist do
     parse_page(1, [])
   end
 
-  defp parse_page(:empty, movies), do: movies
-  defp parse_page(page_number, movies) do
+  defp parse_page(:empty, acc), do: acc
+  defp parse_page(page_number, acc) do
     Logger.debug("Parsing page: #{watchlist_page_url(page_number)}")
 
     page = page_source(page_number)
     results =  page |> watchlist_movies
-    parse_page(next_page(page), movies ++ results)
+    parse_page(next_page(page), acc ++ results)
   end
 
   def page_source(page_number) do
