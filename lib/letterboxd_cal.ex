@@ -1,4 +1,6 @@
 defmodule LetterboxdCal do
+  @moduledoc :nodoc
+
   use Application
   require Logger
 

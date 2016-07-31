@@ -1,4 +1,8 @@
 defmodule LetterboxdCal.UpdateReleaseDates do
+  @moduledoc """
+  Updates each movie release date in the database using data from TMDB
+  """
+
   require Logger
   import Moebius.Query
 

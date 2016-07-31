@@ -1,4 +1,7 @@
 defmodule LetterboxdCal.TMDB do
+  @moduledoc """
+  Retrieves movie information for a given movie using data from TMDB
+  """
 
   def release_date(movie = %{}) do
     release_date(movie.title, movie.year)

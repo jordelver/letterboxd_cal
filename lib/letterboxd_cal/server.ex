@@ -1,4 +1,8 @@
 defmodule LetterboxdCal.Server do
+  @moduledoc """
+  Serves the iCal calendar over HTTP using Plug
+  """
+
   use Plug.Router
 
   plug Plug.Logger, log: :debug

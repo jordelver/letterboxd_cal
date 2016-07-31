@@ -1,4 +1,17 @@
 defmodule LetterboxdCal.Watchlist do
+  @moduledoc """
+  Returns the movies from a user's Letterboxd Watchlist.
+
+  ## Examples
+
+      iex> LetterboxdCal.Watchlist.movies
+      [
+        %{original_title: "The Final Girls (2015)", title: "The Final Girls", year: "2015"},
+        %{original_title: "Big Bad Wolves (2013)", title: "Big Bad Wolves", year: "2013"}
+      ]
+
+  """
+
   require Logger
 
   def movies do

@@ -1,4 +1,8 @@
 defmodule LetterboxdCal.ImportMovies do
+  @moduledoc """
+  Imports movies from the Letterboxd Watchlist and saves them to the database
+  """
+
   require Logger
   import Moebius.Query
 

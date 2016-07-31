@@ -1,5 +1,12 @@
 defmodule LetterboxdCal.Calendar do
+  @moduledoc """
+  Outputs an iCal calendar feed of movies from the database
+  """
+
   defmodule Item do
+    @moduledoc """
+    Represents a calendar item
+    """
     defstruct title: nil, dtstamp: nil, dtstart: nil, dtend: nil
 
     def dtstamp(movie) do
