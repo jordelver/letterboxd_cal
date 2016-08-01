@@ -19,7 +19,13 @@ defmodule LetterboxdCal.UpdateReleaseDates do
 
   def update_movie(:empty, _), do: :empty
   def update_movie(release_date, movie) do
-    "UPDATE movies SET release_date = '#{format_date(release_date)}' WHERE original_title = '#{movie.original_title}';"
+    """
+    UPDATE movies
+    SET
+      release_date = '#{format_date(release_date)}',
+      updated_at = now()
+    WHERE original_title = '#{movie.original_title}';
+    """
     |> LetterboxdCal.Db.run
   end
 
