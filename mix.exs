@@ -21,7 +21,8 @@ defmodule LetterboxdCal.Mixfile do
         :moebius,
         :cowboy,
         :plug,
-        :timex
+        :timex,
+        :quantum
       ],
       mod: {LetterboxdCal, []}
     ]
@@ -45,6 +46,7 @@ defmodule LetterboxdCal.Mixfile do
       {:cowboy, "~> 1.0.4"},
       {:httpoison, "~> 0.8.0"},
       {:poison, "~> 2.0.1"},
+      {:quantum, ">= 0.7.1"},
     ]
   end
 end
