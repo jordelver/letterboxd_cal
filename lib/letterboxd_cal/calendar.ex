@@ -10,20 +10,18 @@ defmodule LetterboxdCal.Calendar do
     defstruct title: nil, dtstamp: nil, dtstart: nil, dtend: nil
 
     def dtstamp(movie) do
-      long_date(movie.release_date)
+      date_with_local_time(movie.release_date)
     end
 
     def dtstart(movie) do
-      short_date(movie.release_date)
+      date(movie.release_date)
     end
 
     def dtend(movie) do
-      short_date(movie.release_date)
+      date(movie.release_date)
     end
 
-    # TODO Rename to a sensible name
-    # What sort of date is this?
-    defp long_date(datetime) do
+    defp date_with_local_time(datetime) do
       {_, datetime} = datetime |> Timex.parse("{YYYY}-{M}-{D}")
 
       datetime
@@ -31,7 +29,7 @@ defmodule LetterboxdCal.Calendar do
       |> elem(1)
     end
 
-    defp short_date(datetime) do
+    defp date(datetime) do
       {_, datetime} = datetime |> Timex.parse("{YYYY}-{M}-{D}")
 
       datetime
