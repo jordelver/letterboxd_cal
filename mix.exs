@@ -40,7 +40,7 @@ defmodule LetterboxdCal.Mixfile do
     [
       {:credo, "~> 0.4", only: [:dev, :test]},
       {:floki, "~> 0.8.1"},
-      {:moebius, "~> 2.0.2"},
+      {:moebius, "~> 2.0.3"},
       {:plug, "~> 1.1.4"},
       {:cowboy, "~> 1.0.4"},
       {:httpoison, "~> 0.8.0"},
