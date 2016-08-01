@@ -14,7 +14,7 @@ defmodule LetterboxdCal.UpdateReleaseDates do
   end
 
   def update_release_date(movie) do
-    TMDB.release_date(movie) |> update_movie(movie)
+    movie |> TMDB.release_date |> update_movie(movie)
   end
 
   def update_movie(:empty, _), do: :empty
