@@ -38,6 +38,7 @@ defmodule LetterboxdCal.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
+      {:credo, "~> 0.4", only: [:dev, :test]},
       {:floki, "~> 0.8.1"},
       {:moebius, "~> 2.0.2"},
       {:plug, "~> 1.1.4"},
