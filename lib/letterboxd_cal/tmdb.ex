@@ -54,7 +54,7 @@ defmodule LetterboxdCal.TMDB do
 
   defp filter_by_country(results, country) do
     results
-    |> Enum.find(&match?(%{"iso_3166_1" => country}, &1))
+    |> Enum.find(&match?(%{"iso_3166_1" => ^country}, &1))
   end
 
   def movie_release_date(movie_id) do
