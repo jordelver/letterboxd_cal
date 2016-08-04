@@ -10,7 +10,7 @@ defmodule LetterboxdCal.UpdateReleaseDates do
 
   def update do
     Logger.debug("Updating movie release dates from TMDB")
-    Enum.each(future_releases_without_release_date, &update_release_date/1)
+    Enum.each(future_releases, &update_release_date/1)
   end
 
   def update_release_date(movie) do
@@ -29,10 +29,9 @@ defmodule LetterboxdCal.UpdateReleaseDates do
     |> LetterboxdCal.Db.run
   end
 
-  def future_releases_without_release_date do
+  def future_releases do
     db(:movies)
     |> filter("year >= '#{Timex.Date.today.year}'")
-    |> filter("release_date IS NULL")
     |> LetterboxdCal.Db.run
   end
 
