@@ -70,6 +70,7 @@ defmodule LetterboxdCal.TMDB do
     end
   end
 
+  defp get_release_dates(nil), do: []
   defp get_release_dates(results) do
     results
     |> Map.get("release_dates")
