@@ -1,6 +1,21 @@
 defmodule LetterboxdCal.Calendar.Item do
   @moduledoc """
   Represents a calendar item
+
+  ## Examples
+
+  iex> movie = %{release_date: "2016-08-02"}
+  ...> LetterboxdCal.Calendar.Item.dtstamp(movie)
+  "20160802T000000Z"
+
+  iex> movie = %{release_date: "2016-08-02"}
+  ...> LetterboxdCal.Calendar.Item.dtstart(movie)
+  "20160802"
+
+  iex> movie = %{release_date: "2016-08-02"}
+  ...> LetterboxdCal.Calendar.Item.dtend(movie)
+  "20160802"
+
   """
   defstruct title: nil, dtstamp: nil, dtstart: nil, dtend: nil
 
