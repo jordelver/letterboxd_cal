@@ -17,7 +17,7 @@ The following environment variables must be set.
 
 ## Prerequisites
 
-* Elixir 1.2
+* Elixir 1.3
 * PostgreSQL
 
 ## Setup
