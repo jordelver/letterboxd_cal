@@ -20,6 +20,11 @@ The following environment variables must be set.
 * Elixir 1.3
 * PostgreSQL
 
+## Deployment
+
+We're using the buildpack from https://github.com/HashNuke/heroku-buildpack-elixir
+to deploy to Heroku.
+
 ## Setup
 
 To start
