@@ -32,18 +32,18 @@ defmodule LetterboxdCal.Calendar.Item do
   end
 
   defp date_with_local_time(datetime) do
-    {_, datetime} = datetime |> Timex.parse("{YYYY}-{M}-{D}")
-
-    datetime
-    |> Timex.format("%Y%m%dT000000Z", :strftime)
-    |> elem(1)
+    format_date(datetime, "%Y%m%dT000000Z")
   end
 
   defp date(datetime) do
+    format_date(datetime, "%Y%m%d")
+  end
+
+  defp format_date(datetime, format) do
     {_, datetime} = datetime |> Timex.parse("{YYYY}-{M}-{D}")
 
     datetime
-    |> Timex.format("%Y%m%d", :strftime)
+    |> Timex.format(format, :strftime)
     |> elem(1)
   end
 end
