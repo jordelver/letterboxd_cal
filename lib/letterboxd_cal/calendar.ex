@@ -27,12 +27,8 @@ defmodule LetterboxdCal.Calendar do
 
   def movie_release_dates do
     db(:movies)
-    |> filter("release_date >= '#{today}'")
+    |> filter("release_date IS NOT NULL")
     |> LetterboxdCal.Db.run
-  end
-
-  def today do
-    Timex.Date.today |> Timex.format("%Y-%m-%d", :strftime) |> elem(1)
   end
 end
 
