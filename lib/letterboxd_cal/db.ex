@@ -1,5 +1,5 @@
 defmodule LetterboxdCal.Db do
-  @moduledoc :nodoc
+  @moduledoc false
   use Moebius.Database
 end
 
