@@ -91,7 +91,7 @@ defmodule LetterboxdCal.Watchlist do
   end
 
   defp watchlist_page_url(page_number) do
-    "https://letterboxd.com/#{watchlist_username}/watchlist/page/#{page_number}/"
+    "https://letterboxd.com/#{watchlist_username()}/watchlist/page/#{page_number}/"
   end
 
   def watchlist_film_slug_url(slug) do

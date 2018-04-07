@@ -2,7 +2,7 @@ defmodule LetterboxdCal.TMDB.MovieReleaseDate do
   import LetterboxdCal.TMDB.Helpers
 
   def movie_release_date(movie_id) do
-    case HTTPoison.get(movie_release_date_url(movie_id, params)) do
+    case HTTPoison.get(movie_release_date_url(movie_id, params())) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body
         |> get_results
@@ -23,7 +23,7 @@ defmodule LetterboxdCal.TMDB.MovieReleaseDate do
   defp get_release_dates(results) do
     results
     |> Map.get("release_dates")
-    |> Enum.filter(fn(result) -> result["type"] == theatrical_release end)
+    |> Enum.filter(fn(result) -> result["type"] == theatrical_release() end)
   end
 
   defp get_release_date([]), do: :empty

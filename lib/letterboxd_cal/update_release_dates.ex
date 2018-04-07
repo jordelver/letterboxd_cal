@@ -10,7 +10,7 @@ defmodule LetterboxdCal.UpdateReleaseDates do
 
   def update do
     Logger.debug("Updating movie release dates from TMDB")
-    Enum.each(future_releases, &update_release_date/1)
+    Enum.each(future_releases(), &update_release_date/1)
   end
 
   def update_release_date(movie) do

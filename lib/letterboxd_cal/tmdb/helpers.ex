@@ -6,11 +6,11 @@ defmodule LetterboxdCal.TMDB.Helpers do
   end
 
   def params(query \\ %{}) do
-    default_params |> Map.merge(query)
+    default_params() |> Map.merge(query)
   end
 
   def default_params do
-    %{"api_key" => api_key}
+    %{"api_key" => api_key()}
   end
 
   def api_key do

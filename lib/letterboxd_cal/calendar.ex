@@ -11,11 +11,11 @@ defmodule LetterboxdCal.Calendar do
     "lib/letterboxd_cal/calendar.eex", [:movies], trim: true)
 
   def ical do
-    template(movies)
+    template(movies())
   end
 
   def movies do
-    Enum.map(movie_release_dates, fn (movie) ->
+    Enum.map(movie_release_dates(), fn (movie) ->
       %Item{
         title:   movie.title,
         dtstamp: Item.dtstamp(movie),

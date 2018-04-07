@@ -8,7 +8,7 @@ defmodule LetterboxdCal.ImportMovies do
 
   def import do
     Logger.debug("Importing new movies from Letterboxd")
-    Enum.each(movies, &save_movie/1)
+    Enum.each(movies(), &save_movie/1)
   end
 
   def save_movie(movie) do
